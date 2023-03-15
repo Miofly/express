@@ -31,3 +31,4 @@ turbo-clean.log*
 
 auto-imports.d.ts
 components.d.ts
+.vercel
