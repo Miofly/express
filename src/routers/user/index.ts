@@ -4,7 +4,7 @@ import { resultSuccess } from '../../utils';
 export const userRouter = Router({})
 
 userRouter.get('/', async(req: Request, res: Response) => {
-  res.redirect('http://wflynn.cn')
+  res.send('🏷')
 })
 
 userRouter.get('/getUserInfo', async ( req: Request, res: Response) => {
