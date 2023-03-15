@@ -8,7 +8,9 @@ app.listen(5000, () => {
 });
 
 app.get("/user", (req, res) => {
-	res.send("测试");
+	res.json({
+		data: ['2', '3']
+	});
 });
 
 // Export the Express API
