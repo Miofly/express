@@ -12,7 +12,7 @@ app.use('/', (req, res) => {
   res.redirect('https://wflynn.cn/home')
 })
 
-app.use('/', userRouter)
+app.use('/user', userRouter)
 
 const startApp = async () => {
   app.listen(port, () => {
