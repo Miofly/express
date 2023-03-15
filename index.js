@@ -1,16 +1,14 @@
 const express = require("express");
 
 const app = express();
-var usersRouter = require('./routes/users');
+
 app.get("/", (req, res) => {
 	res.send("Express on Vercel");
 })
 
 app.get("/test", (req, res) => {
-	res.send("Express on Vercel");
+	res.json("wfd");
 })
-
-app.use('/users', usersRouter);
 
 app.listen(5000, () => {
 	console.log("Running on port 5000.");
