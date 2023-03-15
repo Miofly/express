@@ -8,4 +8,10 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/wfd', function (req, res, next) {
+  res.json({
+    data: ['wfd', 'sdasda']
+  });
+});
+
 module.exports = router;
