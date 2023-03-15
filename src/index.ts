@@ -1,5 +1,5 @@
-import express, { Request, Response } from 'express'
-import { productsRouter } from './routers/products-router';
+import express from 'express'
+import { userRouter } from './routers';
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -7,12 +7,7 @@ const port = process.env.PORT || 5000
 const parserMiddleware = express.json()
 app.use(parserMiddleware)
 
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello Samurai')
-})
-
-app.use('/products', productsRouter)
+app.use('/', userRouter)
 
 const startApp = async () => {
   app.listen(port, () => {
