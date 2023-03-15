@@ -1,23 +1,19 @@
 {
-  "name": "express-products-vercel",
+  "name": "express-for-mock",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "watch": "tsc -w",
+    "start": "tsc -w",
     "dev": "nodemon --inspect dist/index.js",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.11.0"
   },
   "devDependencies": {
+    "@vft/tsconfig": "*",
     "@types/express": "^4.17.14",
     "@types/node": "^18.11.5",
     "nodemon": "^2.0.20",
