@@ -2,6 +2,7 @@
   "extends": "@vft/tsconfig/tsconfig.node.json",
   "compilerOptions": {
     "outDir": "dist",
+    "preserveValueImports": false,
     "module": "commonjs"
   },
   "include": ["src"]

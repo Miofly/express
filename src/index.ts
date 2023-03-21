@@ -1,5 +1,5 @@
 import express from 'express';
-import { userRouter } from './routers';
+import { userRouter, cookieRouter } from './routers';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,6 +17,7 @@ app.all('*', (_: any, res: any, next: () => void) => {
 app.use(parserMiddleware);
 
 app.use('/', userRouter);
+app.use('/cookie', cookieRouter);
 
 const startApp = async () => {
   app.listen(port, () => {

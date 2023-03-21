@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "tsc -w",
-    "dev": "nodemon --inspect dist/index.js",
+    "dev": "concurrently \"pnpm start\" \"pnpm serve\"",
+    "serve": "nodemon --inspect dist/index.js",
     "build": "tsc"
   },
   "dependencies": {
