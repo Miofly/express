@@ -3,9 +3,9 @@ import { resultSuccess } from '../../utils';
 
 export const userRouter = Router({});
 
-userRouter.get('/', async(req: Request, res: Response) => {
-  res.redirect('http://wflynn.cn');
-});
+// userRouter.get('/', async(req: Request, res: Response) => {
+//   res.redirect('http://wflynn.cn');
+// });
 
 userRouter.get('/getUserInfo', async ( req: Request, res: Response) => {
   res.json(resultSuccess([

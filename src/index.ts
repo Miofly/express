@@ -1,5 +1,7 @@
 import express from 'express';
 import { userRouter, cookieRouter } from './routers';
+import { join } from 'path';
+import webpush from 'web-push';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,15 +16,35 @@ app.all('*', (_: any, res: any, next: () => void) => {
   next();
 });
 
-app.use(parserMiddleware);
+app.use(parserMiddleware)
 
-app.use('/', userRouter);
-app.use('/cookie', cookieRouter);
+.use(express.static(join(__dirname, '../public')))
+.use('/use', userRouter)
+.use('/cookie', cookieRouter);
+
+const vapidKeys = {
+  publicKey: 'BKn9WZWSFKaRlWfxwg32xV5M_IYr_nUFRQnS8tb_fR_1X1Ga_xP2TGfObHtKZzDeVBSJfoNasD_-N5qnYyg5enc',
+  privateKey: 'bmsKpg6rE-K-LgU_DAIPynBdD8AK8hal8IMfYo3IyVc'
+};
+
+webpush.setVapidDetails(
+  'mailto:1035465284@qq.com',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);
+
+const subs = [];
+
+app.post('/add-sub', (req, res) => {
+  subs.push(req.body);
+  res.json({ data: 'ok' });
+});
 
 const startApp = async () => {
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
-    console.log(`Example http://localhost:${port}/getUserInfo`);
+    console.log(`Example http://localhost:${port}`);
+    console.log(`Example http://localhost:${port}/use/getUserInfo`);
   });
 };
 
