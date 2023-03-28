@@ -30,3 +30,15 @@ export function resultSuccess<T = any> (result: T, { message = 'ok' } = {}) {
     type: 'success'
   };
 }
+
+export function resultError (
+  message = 'Request failed',
+  { result = null } = {}
+) {
+  return {
+    code: 100,
+    data: result,
+    msg: message,
+    type: 'error'
+  };
+}
