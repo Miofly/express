@@ -10,7 +10,7 @@ const accountList = (() => {
     result.push({
       id: `${index}`,
       account: faker.datatype.uuid(),
-      avatar: faker.image.avatar(),
+      avatar: faker.image.image(),
       password: faker.internet.password(),
       birthdate: faker.date.birthdate(),
       registeredAt: faker.date.past(),
