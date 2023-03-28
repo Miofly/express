@@ -1,5 +1,6 @@
 import { type Request, type Response, Router } from 'express';
 import { resultPageSuccess } from '../../utils';
+import { faker } from '@faker-js/faker';
 
 export const tableRouter = Router({});
 
@@ -8,13 +9,13 @@ const accountList = (() => {
   for (let index = 0; index < 200; index++) {
     result.push({
       id: `${index}`,
-      account: '@first',
-      email: '@email',
-      nickname: '@cname()',
-      role: '@first',
-      createTime: '@datetime',
-      remark: '@cword(10,20)',
-      'status|1': ['0', '1']
+      account: faker.datatype.uuid(),
+      avatar: faker.image.avatar(),
+      password: faker.internet.password(),
+      birthdate: faker.date.birthdate(),
+      registeredAt: faker.date.past(),
+      email: faker.internet.email(),
+      nickname: faker.internet.userName(),
     });
   }
   return result;
