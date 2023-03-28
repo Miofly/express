@@ -19,7 +19,7 @@ app.all('*', (_: any, res: any, next: () => void) => {
 app.use(parserMiddleware)
 
 .use(express.static(join(__dirname, '../public')))
-.use('/use', userRouter)
+.use('/user', userRouter)
 .use('/cookie', cookieRouter)
 .use('/table', tableRouter);
 
@@ -45,7 +45,7 @@ const startApp = async () => {
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
     console.log(`Example http://localhost:${port}`);
-    console.log(`Example http://localhost:${port}/use/getUserInfo`);
+    console.log(`Example http://localhost:${port}/user/getUserInfo`);
   });
 };
 
