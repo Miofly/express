@@ -6,7 +6,7 @@ export const tableRouter = Router({});
 
 const accountList = (() => {
   const result: any[] = [];
-  for (let index = 0; index < 200; index++) {
+  for (let index = 0; index < 93; index++) {
     result.push({
       id: `${index}`,
       account: faker.datatype.uuid(),
@@ -15,7 +15,7 @@ const accountList = (() => {
       birthdate: faker.date.birthdate(),
       registeredAt: faker.date.past(),
       email: faker.internet.email(),
-      nickname: faker.internet.userName(),
+      nickname: faker.internet.userName()
     });
   }
   return result;
