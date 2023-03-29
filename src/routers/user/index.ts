@@ -24,6 +24,7 @@ const userInfos = [
   {
     userId: '1',
     account: '18888888888',
+    nickname: '管理员',
     realName: 'Admin',
     avatar: 'https://q1.qlogo.cn/g?b=qq&nk=190848757&s=640',
     desc: 'manager',
@@ -33,6 +34,7 @@ const userInfos = [
   {
     userId: '2',
     account: '18888888889',
+    nickname: '测试人员',
     realName: 'test user',
     avatar: 'https://q1.qlogo.cn/g?b=qq&nk=339449197&s=640',
     desc: 'tester',
@@ -42,6 +44,7 @@ const userInfos = [
   {
     userId: '3',
     account: '16666666666',
+    nickname: '我是游客',
     realName: 'visitor user',
     avatar: 'https://q1.qlogo.cn/g?b=qq&nk=339449197&s=640',
     desc: 'tester',
