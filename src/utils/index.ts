@@ -33,10 +33,10 @@ export function resultSuccess<T = any> (result: T, { message = 'ok' } = {}) {
 
 export function resultError (
   message = 'Request failed',
-  { result = null } = {}
+  { code = 100, result = null } = {}
 ) {
   return {
-    code: 100,
+    code,
     data: result,
     msg: message,
     type: 'error'

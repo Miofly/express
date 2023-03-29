@@ -54,13 +54,13 @@ userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
   const userIndex = userInfos.findIndex((item) => item.account === phone);
   
   if (userIndex !== -1) {
-    if (password === '123456Aa' || password === '111111') {
+    // if (password === '123456Aa' || password === '111111') {
       res.json(resultSuccess({
         token: userInfos[userIndex].token
       }));
-    } else {
-      res.json(resultError('账号或密码错误'));
-    }
+    // } else {
+    //   res.json(resultError('账号或密码错误'));
+    // }
   } else {
     res.json(resultError('账号或密码错误'));
   }
@@ -73,35 +73,41 @@ userRouter.get(Api.getUserInfo, async(req: Request, res: Response) => {
 });
 
 userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
-  const { phone } = req.params;
+  const { phone } = req.body;
   
   const userIndex = userInfos.findIndex((item) => item.account === phone);
   
   if (userIndex !== -1) {
-    res.json(resultSuccess({
-      smsVerifyCode: '1234'
-    }));
+    res.json(resultSuccess(true));
   } else {
     res.json(resultError('账号错误'));
   }
 });
 
 userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
-  const { smsVerifyCode, phone } = req.params;
+  const { smsVerifyCode, phone } = req.body;
   
   const userIndex = userInfos.findIndex((item) => item.account === phone);
   
   if (userIndex !== -1) {
     if (smsVerifyCode === '1234') {
-      res.json(resultSuccess(true));
+      res.json(resultSuccess({
+        token: userInfos[userIndex].token
+      }));
     } else {
-      res.json(resultError('验证码错误'));
+      res.json(resultError('验证码错误', { code: 400000 }));
     }
   } else {
-    res.json(resultError('账号错误'));
+    res.json(resultError('账号错误', { code: 400001 }));
   }
 });
 
 userRouter.post(Api.logout, async(req: Request, res: Response) => {
   res.json(resultSuccess(true));
+});
+
+userRouter.post(Api.register, async(req: Request, res: Response) => {
+  res.json(resultSuccess({
+    token: userInfos[2].token
+  }));
 });
