@@ -50,8 +50,7 @@ const userInfos = [
 ];
 
 userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
-  const { password, phone } = req.params;
-  
+  const { password, phone } = req.body;
   const userIndex = userInfos.findIndex((item) => item.account === phone);
   
   if (userIndex !== -1) {
@@ -68,7 +67,9 @@ userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
 });
 
 userRouter.get(Api.getUserInfo, async(req: Request, res: Response) => {
-  res.json(resultSuccess(userInfos));
+  const user_token = req.headers['authorization'];
+  const userIndex = userInfos.findIndex((item) => user_token?.includes(item.token));
+  res.json(resultSuccess(userInfos[userIndex]));
 });
 
 userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
@@ -99,4 +100,8 @@ userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
   } else {
     res.json(resultError('账号错误'));
   }
+});
+
+userRouter.post(Api.logout, async(req: Request, res: Response) => {
+  res.json(resultSuccess(true));
 });
