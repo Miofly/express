@@ -1,6 +1,6 @@
 import { type Request, type Response, Router } from 'express';
 import { resultError, resultSuccess } from '../../utils';
-
+import { faker } from '@faker-js/faker';
 export const userRouter = Router({});
 
 const Api = {
@@ -24,30 +24,27 @@ const userInfos = [
   {
     userId: '1',
     account: '18888888888',
-    nickname: '管理员',
+    username: '管理员',
     realName: 'Admin',
-    avatar: 'https://q1.qlogo.cn/g?b=qq&nk=190848757&s=640',
-    desc: 'manager',
+    avatar: faker.image.image(),
     token: 'admin-token',
     roles: ['super']
   },
   {
     userId: '2',
     account: '18888888889',
-    nickname: '测试人员',
+    username: '测试人员',
     realName: 'test user',
-    avatar: 'https://q1.qlogo.cn/g?b=qq&nk=339449197&s=640',
-    desc: 'tester',
+    avatar: faker.image.image(),
     token: 'test-token',
     roles: ['test']
   },
   {
     userId: '3',
     account: '16666666666',
-    nickname: '我是游客',
+    username: '我是游客',
     realName: 'visitor user',
-    avatar: 'https://q1.qlogo.cn/g?b=qq&nk=339449197&s=640',
-    desc: 'tester',
+    avatar: faker.image.image(),
     token: 'visitor-token'
   }
 ];
