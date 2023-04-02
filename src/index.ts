@@ -1,7 +1,7 @@
 import express from 'express';
 import { userRouter, cookieRouter, tableRouter } from './routers';
 import { join } from 'path';
-import webpush from 'web-push';
+// import webpush from 'web-push';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,11 +28,11 @@ const vapidKeys = {
   privateKey: 'bmsKpg6rE-K-LgU_DAIPynBdD8AK8hal8IMfYo3IyVc'
 };
 
-webpush.setVapidDetails(
-  'mailto:1035465284@qq.com',
-  vapidKeys.publicKey,
-  vapidKeys.privateKey
-);
+// webpush.setVapidDetails(
+//   'mailto:1035465284@qq.com',
+//   vapidKeys.publicKey,
+//   vapidKeys.privateKey
+// );
 
 const subs = [];
 
