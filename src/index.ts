@@ -18,7 +18,7 @@ app.all('*', (_: any, res: any, next: () => void) => {
 
 app.use(parserMiddleware)
 
-.use(express.static(join(__dirname, '../public')))
+// .use(express.static(join(__dirname, '../public')))
 .use('/user', userRouter)
 .use('/cookie', cookieRouter)
 .use('/table', tableRouter);
