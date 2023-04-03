@@ -8,13 +8,11 @@ const port = process.env.PORT || 5000;
 
 const parserMiddleware = express.json();
 
-app.all('*', (_: any, res: any, next: () => void) => {
+app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Methods', '*');
-  // res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header('Content-Type', 'application/json;charset=utf-8');
-  // res.header('X-Powered-By', ' 3.2.1');
   next();
 });
 
