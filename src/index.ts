@@ -16,16 +16,16 @@ const parserMiddleware = express.json();
 // });
 
 app.use((req, res, next) => {
+  console.log(req.headers);
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Authorization,X-API-KEY,Origin,X-Requested-With,Content-Type,Accept,Access-Control-Request-Method,application/json;charset=UTF-8');
+  res.header('Access-Control-Allow-Headers', 'authorization,content-type');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE');
-  res.header('Allow', 'GET, POST, PATCH, OPTIONS, PUT, DELETE');
-  res.header('X-Powered-By', ' 3.2.1');
+  // res.header('Allow', 'GET, POST, PATCH, OPTIONS, PUT, DELETE');
+  // res.header('X-Powered-By', ' 3.2.1');
   next();
 });
 
 app.use(parserMiddleware)
-
 // .use(express.static(join(__dirname, '../public')))
 .use('/user', userRouter)
 .use('/cookie', cookieRouter)
