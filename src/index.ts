@@ -18,7 +18,7 @@ const parserMiddleware = express.json();
 app.use((req, res, next) => {
   console.log(req.headers);
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'authorization,content-type');
+  res.header('Access-Control-Allow-Headers', 'client,authorization,content-type');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE');
   // res.header('Allow', 'GET, POST, PATCH, OPTIONS, PUT, DELETE');
   // res.header('X-Powered-By', ' 3.2.1');
