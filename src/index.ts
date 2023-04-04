@@ -16,7 +16,7 @@ const parserMiddleware = express.json();
 // });
 
 app.use((req, res, next) => {
-  console.log(req.headers);
+  // console.log(req.headers);
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'authorization,content-type');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE');
