@@ -17,7 +17,9 @@ const Api = {
   /** 改变密码 */
   changePw: '/changePw',
   /** 退出登录 */
-  logout: '/logout'
+  logout: '/logout',
+  /** 用户信息修改 */
+  userEdit: '/user-edit',
 };
 
 const userInfos = [
@@ -53,7 +55,7 @@ userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
   console.log(req);
   const { password, phone } = req.body;
   const userIndex = userInfos.findIndex((item) => item.account === phone);
-  
+
   if (userIndex !== -1) {
     // if (password === '123456Aa' || password === '111111') {
       res.json(resultSuccess({
@@ -75,9 +77,9 @@ userRouter.get(Api.getUserInfo, async(req: Request, res: Response) => {
 
 userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
   const { phone } = req.body;
-  
+
   const userIndex = userInfos.findIndex((item) => item.account === phone);
-  
+
   if (userIndex !== -1) {
     res.json(resultSuccess(true));
   } else {
@@ -87,9 +89,9 @@ userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
 
 userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
   const { smsVerifyCode, phone } = req.body;
-  
+
   const userIndex = userInfos.findIndex((item) => item.account === phone);
-  
+
   if (userIndex !== -1) {
     if (smsVerifyCode === '1234') {
       res.json(resultSuccess({
@@ -112,3 +114,19 @@ userRouter.post(Api.register, async(req: Request, res: Response) => {
     token: userInfos[2].token
   }));
 });
+
+userRouter.post(Api.userEdit, async (req: Request, res: Response) => {
+  const { username } = req.body;
+  res.json(resultSuccess({
+    ...getCurrentUserInfo(req),
+    username
+  }));
+});
+
+
+function getCurrentUserInfo (req: Request) {
+  const user_token = req.headers['authorization'];
+  const userIndex = userInfos.findIndex((item) => user_token?.includes(item.token));
+
+  return userInfos[userIndex];
+}
