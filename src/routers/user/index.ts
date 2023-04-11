@@ -19,13 +19,14 @@ const Api = {
   /** 退出登录 */
   logout: '/logout',
   /** 用户信息修改 */
-  userEdit: '/user-edit',
+  userEdit: '/user-edit'
 };
 
 const userInfos = [
   {
     userId: '1',
     account: '18888888888',
+    phone: '18888888888',
     username: '管理员',
     realName: 'Admin',
     avatar: faker.image.image(),
@@ -35,6 +36,7 @@ const userInfos = [
   {
     userId: '2',
     account: '18888888889',
+    phone: '18888888889',
     username: '测试人员',
     realName: 'test user',
     avatar: faker.image.image(),
@@ -44,6 +46,7 @@ const userInfos = [
   {
     userId: '3',
     account: '16666666666',
+    phone: '16666666666',
     username: '我是游客',
     realName: 'visitor user',
     avatar: faker.image.image(),
