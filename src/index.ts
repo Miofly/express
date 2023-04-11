@@ -1,5 +1,5 @@
 import express from 'express';
-import { userRouter, cookieRouter, tableRouter } from './routers';
+import { userRouter, cookieRouter, tableRouter, commonRouter } from './routers';
 import { join } from 'path';
 // import webpush from 'web-push';
 
@@ -29,7 +29,8 @@ app.use(parserMiddleware)
 // .use(express.static(join(__dirname, '../public')))
 .use('/user', userRouter)
 .use('/cookie', cookieRouter)
-.use('/table', tableRouter);
+.use('/table', tableRouter)
+.use('/common', commonRouter);
 
 const vapidKeys = {
   publicKey: 'BKn9WZWSFKaRlWfxwg32xV5M_IYr_nUFRQnS8tb_fR_1X1Ga_xP2TGfObHtKZzDeVBSJfoNasD_-N5qnYyg5enc',
