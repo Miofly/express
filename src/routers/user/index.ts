@@ -19,7 +19,8 @@ const Api = {
   /** 退出登录 */
   logout: '/logout',
   /** 用户信息修改 */
-  userEdit: '/user-edit'
+  userEdit: '/user-edit',
+  updatePhone: '/updatePhone'
 };
 
 const userInfos = [
@@ -79,15 +80,7 @@ userRouter.get(Api.getUserInfo, async(req: Request, res: Response) => {
 });
 
 userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
-  const { phone } = req.body;
-
-  const userIndex = userInfos.findIndex((item) => item.account === phone);
-
-  if (userIndex !== -1) {
-    res.json(resultSuccess(true));
-  } else {
-    res.json(resultError('账号错误'));
-  }
+  res.json(resultSuccess(true));
 });
 
 userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
@@ -126,6 +119,13 @@ userRouter.post(Api.userEdit, async (req: Request, res: Response) => {
   }));
 });
 
+userRouter.post(Api.updatePhone, async (req: Request, res: Response) => {
+  const { phone } = req.body;
+  res.json(resultSuccess({
+    ...getCurrentUserInfo(req),
+    phone
+  }));
+});
 
 function getCurrentUserInfo (req: Request) {
   const user_token = req.headers['authorization'];
