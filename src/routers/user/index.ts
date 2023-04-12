@@ -127,6 +127,10 @@ userRouter.post(Api.updatePhone, async (req: Request, res: Response) => {
   }));
 });
 
+userRouter.post(Api.changePw, async (req: Request, res: Response) => {
+  res.json(resultSuccess(true));
+});
+
 function getCurrentUserInfo (req: Request) {
   const user_token = req.headers['authorization'];
   const userIndex = userInfos.findIndex((item) => user_token?.includes(item.token));
