@@ -47,7 +47,7 @@ const userInfos = [
   {
     userId: '3',
     account: '16666666666',
-    phone: '16666666666',
+    phone: '',
     username: '我是游客',
     realName: 'visitor user',
     avatar: faker.image.image(),
