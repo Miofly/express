@@ -22,9 +22,7 @@ const accountList = (() => {
 })();
 
 tableRouter.get('/', async(req: Request, res: Response) => {
-  console.log(req.query, '---');
   const { page = 1, pageSize = 20 } = req.query as unknown as {page: number, pageSize: number};
- 
+
   res.json(resultPageSuccess(page, pageSize, accountList));
 });
-
