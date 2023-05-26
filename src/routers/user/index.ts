@@ -57,8 +57,8 @@ const userInfos = [
 
 userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
   console.log(req);
-  const { password, phone } = req.body;
-  const userIndex = userInfos.findIndex((item) => item.account === phone);
+  const { password, account } = req.body;
+  const userIndex = userInfos.findIndex((item) => item.account === account);
 
   if (userIndex !== -1) {
     // if (password === '123456Aa' || password === '111111') {
