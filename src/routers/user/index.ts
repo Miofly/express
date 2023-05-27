@@ -84,12 +84,12 @@ userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
 });
 
 userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
-  const { smsVerifyCode, phone } = req.body;
+  const { verifyCode, phone } = req.body;
 
   const userIndex = userInfos.findIndex((item) => item.account === phone);
 
   if (userIndex !== -1) {
-    if (smsVerifyCode === '1234') {
+    if (verifyCode === '1234') {
       res.json(resultSuccess({
         token: userInfos[userIndex].token
       }));
