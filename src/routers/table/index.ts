@@ -4,8 +4,6 @@ import { faker } from '@faker-js/faker';
 
 export const tableRouter = Router({});
 
-
-
 const accountList = (() => {
   const result: any[] = [];
   for (let index = 0; index < 93; index++) {
@@ -26,8 +24,8 @@ const accountList = (() => {
   return result;
 })();
 
-tableRouter.get('/', async(req: Request, res: Response) => {
-  const { page = 1, pageSize = 20 } = req.query as unknown as {page: number, pageSize: number};
+tableRouter.get('/', async (req: Request, res: Response) => {
+  const { page = 1, pageSize = 20 } = req.query as unknown as { page: number; pageSize: number };
 
   res.json(resultPageSuccess(page, pageSize, accountList));
 });

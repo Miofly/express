@@ -25,12 +25,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(parserMiddleware)
-// .use(express.static(join(__dirname, '../public')))
-.use('/user', userRouter)
-.use('/cookie', cookieRouter)
-.use('/table', tableRouter)
-.use('/common', commonRouter);
+app
+  .use(parserMiddleware)
+  // .use(express.static(join(__dirname, '../public')))
+  .use('/user', userRouter)
+  .use('/cookie', cookieRouter)
+  .use('/table', tableRouter)
+  .use('/common', commonRouter);
 
 const vapidKeys = {
   publicKey: 'BKn9WZWSFKaRlWfxwg32xV5M_IYr_nUFRQnS8tb_fR_1X1Ga_xP2TGfObHtKZzDeVBSJfoNasD_-N5qnYyg5enc',

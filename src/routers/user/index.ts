@@ -55,16 +55,18 @@ const userInfos = [
   }
 ];
 
-userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
+userRouter.post(Api.loginByPw, async (req: Request, res: Response) => {
   console.log(req);
   const { password, account } = req.body;
-  const userIndex = userInfos.findIndex((item) => item.account === account);
+  const userIndex = userInfos.findIndex(item => item.account === account);
 
   if (userIndex !== -1) {
     // if (password === '123456Aa' || password === '111111') {
-      res.json(resultSuccess({
+    res.json(
+      resultSuccess({
         token: userInfos[userIndex].token
-      }));
+      })
+    );
     // } else {
     //   res.json(resultError('账号或密码错误'));
     // }
@@ -73,26 +75,28 @@ userRouter.post(Api.loginByPw, async(req: Request, res: Response) => {
   }
 });
 
-userRouter.get(Api.getUserInfo, async(req: Request, res: Response) => {
+userRouter.get(Api.getUserInfo, async (req: Request, res: Response) => {
   const user_token = req.headers['authorization'];
-  const userIndex = userInfos.findIndex((item) => user_token?.includes(item.token));
+  const userIndex = userInfos.findIndex(item => user_token?.includes(item.token));
   res.json(resultSuccess(userInfos[userIndex]));
 });
 
-userRouter.post(Api.sendSms, async(req: Request, res: Response) => {
+userRouter.post(Api.sendSms, async (req: Request, res: Response) => {
   res.json(resultSuccess(true));
 });
 
-userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
+userRouter.post(Api.loginBySms, async (req: Request, res: Response) => {
   const { verifyCode, phone } = req.body;
 
-  const userIndex = userInfos.findIndex((item) => item.account === phone);
+  const userIndex = userInfos.findIndex(item => item.account === phone);
 
   if (userIndex !== -1) {
     if (verifyCode === '1234') {
-      res.json(resultSuccess({
-        token: userInfos[userIndex].token
-      }));
+      res.json(
+        resultSuccess({
+          token: userInfos[userIndex].token
+        })
+      );
     } else {
       res.json(resultError('验证码错误', { code: 400000 }));
     }
@@ -101,39 +105,45 @@ userRouter.post(Api.loginBySms, async(req: Request, res: Response) => {
   }
 });
 
-userRouter.post(Api.logout, async(req: Request, res: Response) => {
+userRouter.post(Api.logout, async (req: Request, res: Response) => {
   res.json(resultSuccess(true));
 });
 
-userRouter.post(Api.register, async(req: Request, res: Response) => {
-  res.json(resultSuccess({
-    token: userInfos[2].token
-  }));
+userRouter.post(Api.register, async (req: Request, res: Response) => {
+  res.json(
+    resultSuccess({
+      token: userInfos[2].token
+    })
+  );
 });
 
 userRouter.post(Api.userEdit, async (req: Request, res: Response) => {
   const { username } = req.body;
-  res.json(resultSuccess({
-    ...getCurrentUserInfo(req),
-    username
-  }));
+  res.json(
+    resultSuccess({
+      ...getCurrentUserInfo(req),
+      username
+    })
+  );
 });
 
 userRouter.post(Api.updatePhone, async (req: Request, res: Response) => {
   const { phone } = req.body;
-  res.json(resultSuccess({
-    ...getCurrentUserInfo(req),
-    phone
-  }));
+  res.json(
+    resultSuccess({
+      ...getCurrentUserInfo(req),
+      phone
+    })
+  );
 });
 
 userRouter.post(Api.changePw, async (req: Request, res: Response) => {
   res.json(resultSuccess(true));
 });
 
-function getCurrentUserInfo (req: Request) {
+function getCurrentUserInfo(req: Request) {
   const user_token = req.headers['authorization'];
-  const userIndex = userInfos.findIndex((item) => user_token?.includes(item.token));
+  const userIndex = userInfos.findIndex(item => user_token?.includes(item.token));
 
   return userInfos[userIndex];
 }
