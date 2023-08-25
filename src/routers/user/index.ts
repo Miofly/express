@@ -20,7 +20,7 @@ const Api = {
   logout: '/logout',
   /** 用户信息修改 */
   userEdit: '/user-edit',
-  updatePhone: '/updatePhone'
+  updatePhone: '/updatePhone',
 };
 
 const userInfos = [
@@ -32,7 +32,7 @@ const userInfos = [
     realName: 'Admin',
     avatar: faker.image.image(),
     token: 'admin-token',
-    roles: ['super']
+    roles: ['super'],
   },
   {
     userId: '2',
@@ -42,7 +42,7 @@ const userInfos = [
     realName: 'test user',
     avatar: faker.image.image(),
     token: 'test-token',
-    roles: ['test']
+    roles: ['test'],
   },
   {
     userId: '3',
@@ -51,8 +51,8 @@ const userInfos = [
     username: '我是游客',
     realName: 'visitor user',
     avatar: faker.image.image(),
-    token: 'visitor-token'
-  }
+    token: 'visitor-token',
+  },
 ];
 
 userRouter.post(Api.loginByPw, async (req: Request, res: Response) => {
@@ -64,8 +64,8 @@ userRouter.post(Api.loginByPw, async (req: Request, res: Response) => {
     // if (password === '123456Aa' || password === '111111') {
     res.json(
       resultSuccess({
-        token: userInfos[userIndex].token
-      })
+        token: userInfos[userIndex].token,
+      }),
     );
     // } else {
     //   res.json(resultError('账号或密码错误'));
@@ -77,7 +77,9 @@ userRouter.post(Api.loginByPw, async (req: Request, res: Response) => {
 
 userRouter.get(Api.getUserInfo, async (req: Request, res: Response) => {
   const user_token = req.headers['authorization'];
-  const userIndex = userInfos.findIndex(item => user_token?.includes(item.token));
+  const userIndex = userInfos.findIndex(item =>
+    user_token?.includes(item.token),
+  );
   res.json(resultSuccess(userInfos[userIndex]));
 });
 
@@ -94,8 +96,8 @@ userRouter.post(Api.loginBySms, async (req: Request, res: Response) => {
     if (verifyCode === '1234') {
       res.json(
         resultSuccess({
-          token: userInfos[userIndex].token
-        })
+          token: userInfos[userIndex].token,
+        }),
       );
     } else {
       res.json(resultError('验证码错误', { code: 400000 }));
@@ -112,8 +114,8 @@ userRouter.post(Api.logout, async (req: Request, res: Response) => {
 userRouter.post(Api.register, async (req: Request, res: Response) => {
   res.json(
     resultSuccess({
-      token: userInfos[2].token
-    })
+      token: userInfos[2].token,
+    }),
   );
 });
 
@@ -122,8 +124,8 @@ userRouter.post(Api.userEdit, async (req: Request, res: Response) => {
   res.json(
     resultSuccess({
       ...getCurrentUserInfo(req),
-      username
-    })
+      username,
+    }),
   );
 });
 
@@ -132,8 +134,8 @@ userRouter.post(Api.updatePhone, async (req: Request, res: Response) => {
   res.json(
     resultSuccess({
       ...getCurrentUserInfo(req),
-      phone
-    })
+      phone,
+    }),
   );
 });
 
@@ -143,7 +145,9 @@ userRouter.post(Api.changePw, async (req: Request, res: Response) => {
 
 function getCurrentUserInfo(req: Request) {
   const user_token = req.headers['authorization'];
-  const userIndex = userInfos.findIndex(item => user_token?.includes(item.token));
+  const userIndex = userInfos.findIndex(item =>
+    user_token?.includes(item.token),
+  );
 
   return userInfos[userIndex];
 }

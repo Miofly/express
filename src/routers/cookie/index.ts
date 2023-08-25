@@ -23,7 +23,7 @@ cookieRouter.get('/', async (req: Request, res: Response) => {
       password: '123456Aa',
       token: 'fakeToken1',
       // 修改主页路径
-      roles: ['super']
-    })
+      roles: ['super'],
+    }),
   );
 });

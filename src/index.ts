@@ -18,8 +18,14 @@ const parserMiddleware = express.json();
 app.use((req, res, next) => {
   console.log(req.headers);
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'client,authorization,content-type');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'client,authorization,content-type',
+  );
+  res.header(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PATCH, PUT, DELETE',
+  );
   // res.header('Allow', 'GET, POST, PATCH, OPTIONS, PUT, DELETE');
   // res.header('X-Powered-By', ' 3.2.1');
   next();
@@ -34,8 +40,9 @@ app
   .use('/common', commonRouter);
 
 const vapidKeys = {
-  publicKey: 'BKn9WZWSFKaRlWfxwg32xV5M_IYr_nUFRQnS8tb_fR_1X1Ga_xP2TGfObHtKZzDeVBSJfoNasD_-N5qnYyg5enc',
-  privateKey: 'bmsKpg6rE-K-LgU_DAIPynBdD8AK8hal8IMfYo3IyVc'
+  publicKey:
+    'BKn9WZWSFKaRlWfxwg32xV5M_IYr_nUFRQnS8tb_fR_1X1Ga_xP2TGfObHtKZzDeVBSJfoNasD_-N5qnYyg5enc',
+  privateKey: 'bmsKpg6rE-K-LgU_DAIPynBdD8AK8hal8IMfYo3IyVc',
 };
 
 // webpush.setVapidDetails(
