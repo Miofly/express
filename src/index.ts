@@ -31,6 +31,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/jsonp', (req, res) => {
+  const fn = req.query.callback; // fn='zl'
+  const data = JSON.stringify({
+    data: 'test data ',
+  });
+  res.end(fn + `(${data})`);
+});
+
 app
   .use(parserMiddleware)
   // .use(express.static(join(__dirname, '../public')))
