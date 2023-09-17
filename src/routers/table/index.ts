@@ -11,8 +11,8 @@ const accountList = (() => {
       id: `${index}`,
       name: faker.internet.userName(),
 
-      account: faker.datatype.uuid(),
-      avatar: faker.image.image(),
+      account: faker.string.uuid(),
+      avatar: faker.image.url(),
       password: faker.internet.password(),
       birthdate: faker.date.birthdate(),
       registeredAt: faker.date.past(),

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "verbatimModuleSyntax": false,
+    "preserveValueImports": false,
     "module": "commonjs"
   },
   "include": ["src"]

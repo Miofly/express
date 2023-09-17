@@ -6,7 +6,7 @@ import number = prompts.prompts.number;
 // import webpush from 'web-push';
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5353;
 
 const parserMiddleware = express.json();
 
