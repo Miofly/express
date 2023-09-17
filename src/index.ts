@@ -40,8 +40,6 @@ app.get('/jsonp', (req, res) => {
     data: 'test data ',
   });
 
-  console.log(timeout, '---');
-
   // 延迟响应，如果提供了 timeout 参数
   if (timeout > 0) {
     setTimeout(() => {
