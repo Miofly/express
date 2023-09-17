@@ -1,6 +1,8 @@
 import express from 'express';
 import { userRouter, cookieRouter, tableRouter, commonRouter } from './routers';
 import { join } from 'path';
+import prompts from 'prompts';
+import number = prompts.prompts.number;
 // import webpush from 'web-push';
 
 const app = express();
@@ -32,11 +34,21 @@ app.use((req, res, next) => {
 });
 
 app.get('/jsonp', (req, res) => {
-  const fn = req.query.callback; // fn='zl'
+  const cbk = req.query.callback;
+  let timeout = req.query.timeout as unknown as number;
+  timeout = isNaN(Number(timeout)) ? 0 : Number(timeout);
   const data = JSON.stringify({
     data: 'test data ',
   });
-  res.end(fn + `(${data})`);
+
+  // 延迟响应，如果提供了 timeout 参数
+  if (timeout > 0) {
+    setTimeout(() => {
+      res.end(cbk + `(${data})`);
+    }, timeout);
+  } else {
+    res.end(cbk + `(${data})`);
+  }
 });
 
 app
