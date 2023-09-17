@@ -18,7 +18,6 @@ const parserMiddleware = express.json();
 // });
 
 app.use((req, res, next) => {
-  console.log(req.headers);
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
@@ -41,11 +40,13 @@ app.get('/jsonp', (req, res) => {
     data: 'test data ',
   });
 
+  console.log(timeout, '---');
+
   // 延迟响应，如果提供了 timeout 参数
   if (timeout > 0) {
     setTimeout(() => {
       res.end(cbk + `(${data})`);
-    }, timeout);
+    }, timeout * 1000);
   } else {
     res.end(cbk + `(${data})`);
   }
