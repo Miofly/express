@@ -11,7 +11,7 @@ cookieRouter.get('/', async (req: Request, res: Response) => {
   res.cookie('height', '180', { domain: '10.17.223.185' });
   res.cookie('weight', '150', { domain: 'localhost' });
   res.cookie('hobby-one', 'game', { domain: '127.0.0.0' });
-  res.cookie('hobby-two', 'video', { secure: true });
+  res.cookie('hobby-two', 'video', { secure: true, domain: 'api.wflynn.cn' });
 
   res.json(
     resultSuccess({
